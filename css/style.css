@@ -1,6 +1,7 @@
 body,
 html {
   margin: 0;
+  overflow: hidden;
 }
 #game-container {
   display: flex;
@@ -8,8 +9,10 @@ html {
   align-items: center;
 }
 
-#andy-highest-container {
+#andy-char {
   position: relative;
+  transform: scale(0.9);
+  left: 300px;
 }
 
 #text-box {
@@ -17,11 +20,15 @@ html {
   z-index: 10;
   bottom: 0;
   width: 50%;
+  min-width: 700px;
   background-color: black;
   color: white;
   font-size: 20px;
   padding: 10px 0 0 10px;
+  margin: 0 0 10px 0;
   height: 200px;
+  border: 5px ridge #444;
+  opacity: 0.98;
 }
 
 #andy-container {
