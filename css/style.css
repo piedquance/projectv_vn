@@ -9,9 +9,12 @@ html {
   align-items: center;
 }
 
-#andy-char {
+.char {
   position: relative;
   transform: scale(0.9);
+}
+
+#andy-char {
   left: 300px;
   top: 70px;
 }
@@ -24,7 +27,7 @@ html {
   min-width: 700px;
   background-color: #000;
   color: white;
-  font-size: 20px;
+  font-family: "Lucida Console";
   padding: 10px;
   margin: 0 0 10px 0;
   height: 20vh;
@@ -43,25 +46,22 @@ html {
   width: 100%;
   display: inline;
   font-size: 30px;
-  margin: 0;
-  padding: 0 10px 0 5px;
+  margin: 0 0 0px 0;
+  padding: 0 20px 0px 0px;
+  border-right: 2px solid #fff;
+
   position: relative;
-  top: -5px;
 }
 
 #dialogue {
   display: inline;
   position: relative;
-  top: 10px;
-  left: 15px;
+  padding: 0 0px 0px 10px;
+  font-size: 17px;
+  margin: 0;
 }
 
-#andy-hair-container,
-#andy-eyes-container,
-#andy-mouth-container,
-#andy-leftArm-container,
-#andy-rightArm-container,
-#andy-body-container {
+.container {
   position: absolute;
   width: 100%;
   display: flex;

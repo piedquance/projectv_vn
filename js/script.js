@@ -3,6 +3,9 @@ let doc = document;
 char = {};
 game = {
   ref: doc.getElementById("game-container"),
+  box: doc.getElementById("text-box"),
+  dialogue: doc.getElementById("dialogue"),
+  nameDisplayed: doc.getElementById("name"),
 };
 
 char.andy = {
@@ -59,12 +62,14 @@ char.andy = {
 
 game.cinit = () => {
   for (var key in char) {
-    game.ref.innerHTML += `<div id="${key}-char"></div>`;
+    game.ref.innerHTML += `<div class="char" id="${key}-char"></div>`;
     char[key].info.dref = doc.getElementById(`${key}-char`);
 
     for (var part in char[key]) {
       if (part !== "info") {
-        char[key].info.dref.innerHTML += `  <div id="${key}-${part}-container">
+        char[
+          key
+        ].info.dref.innerHTML += `<div class="container" id="${key}-${part}-container">
         <img id="${key}-${part}" src="${
           char[key][part].links[char[key][part].n]
         }" /></div>`;
@@ -87,6 +92,16 @@ game.cinit = () => {
 
     char[key].rightArm.dref = doc.getElementById(`${key}-rightArm-container`);
     char[key].rightArm.iref = doc.getElementById(`${key}-rightArm`);
+  }
+};
+
+game.update = () => {
+  for (var key in char) {
+    game.ref.innerHTML += `<div id="${key}-char"></div>`;
+    char[key].info.dref = doc.getElementById(`${key}-char`);
+
+    for (var part in char[key]) {
+    }
   }
 };
 
