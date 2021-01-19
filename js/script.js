@@ -65,13 +65,12 @@ game.cinit = () => {
     game.ref.innerHTML += `<div class="char" id="${key}-char"></div>`;
     char[key].info.dref = doc.getElementById(`${key}-char`);
 
-    for (var part in char[key]) {
+    let temp = char[key];
+    for (var part in temp) {
       if (part !== "info") {
-        char[
-          key
-        ].info.dref.innerHTML += `<div class="container" id="${key}-${part}-container">
+        temp.info.dref.innerHTML += `<div class="container ${part}" id="${key}-${part}-container">
         <img id="${key}-${part}" src="${
-          char[key][part].links[char[key][part].n]
+          temp[part].links[temp[part].n]
         }" /></div>`;
       }
     }
@@ -97,26 +96,34 @@ game.cinit = () => {
 
 game.update = () => {
   for (var key in char) {
-    game.ref.innerHTML += `<div id="${key}-char"></div>`;
-    char[key].info.dref = doc.getElementById(`${key}-char`);
+    char[key].info.dref.style.display = char[key].info.show ? "" : "none";
+    if (!char[key].info.show) continue;
+    char[key].info.dref.style.left = char[key].info.x + "px";
+    char[key].info.dref.style.top = char[key].info.y + "px";
 
-    for (var part in char[key]) {
+    let temp = char[key];
+
+    for (var part in temp) {
+      if (part !== "info") {
+        if (part == "leftArm")
+          temp[part].dref.style.right = temp[part].x + "px";
+        if (part == "rightArm")
+          temp[part].dref.style.left = temp[part].x + "px";
+
+        temp[part].dref.style.top = temp[part].y + "px";
+
+        temp[part].iref.src = temp[part].links[temp[part].n];
+      }
     }
   }
 };
 
 game.cinit();
 
-let x = 0;
-
-setInterval(() => {
-  char.andy.mouth.iref.src = char.andy.mouth.links[x];
-
-  x = x == char.andy.mouth.links.length - 1 ? 0 : x + 1;
-}, 1000);
-
 setInterval(() => {
   char.andy.info.dref.style.transform = `scale(${window.innerHeight / 1000})`;
 
   game.ref.style.height = window.innerHeight + "px";
-}, 10);
+
+  game.update();
+}, 100);

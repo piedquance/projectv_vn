@@ -14,11 +14,6 @@ html {
   transform: scale(0.9);
 }
 
-#andy-char {
-  left: 300px;
-  top: 70px;
-}
-
 #text-box {
   position: absolute;
   z-index: 10;
@@ -69,34 +64,18 @@ html {
   align-items: center;
 }
 
-#andy-body-container {
+.body {
   z-index: 5;
 }
 
-#andy-eyes-container {
-  top: 150px;
+.eyes,
+.mouth,
+.hair {
   z-index: 6;
 }
 
-#andy-mouth-container {
-  top: 270px;
-  z-index: 6;
-}
-
-#andy-hair-container {
-  z-index: 6;
-}
-
-#andy-leftArm-container {
+.rightArm,
+.leftArm {
   width: auto;
-  right: 110px;
-  top: 370px;
-  z-index: 4;
-}
-
-#andy-rightArm-container {
-  width: auto;
-  left: 110px;
-  top: 370px;
   z-index: 4;
 }
