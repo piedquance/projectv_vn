@@ -12,22 +12,17 @@ char.andy = {
     show: true,
     x: 300,
     y: 70,
-    dref: {},
   },
 
   body: {
     links: ["css/images/andy_body_full_suit.png"],
     n: 0,
-    dref: {},
-    iref: {},
   },
 
   hair: {
     links: ["css/images/andy_hair1.png"],
     n: 0,
     y: 0,
-    dref: {},
-    iref: {},
   },
 
   mouth: {
@@ -37,18 +32,14 @@ char.andy = {
       "css/images/andy_mouth2.png",
       "css/images/andy_mouth4.png",
     ],
-    n: 0,
+    n: 1,
     y: 270,
-    dref: {},
-    iref: {},
   },
 
   eyes: {
     links: ["css/images/andy_eyes1.png"],
     n: 0,
     y: 150,
-    dref: {},
-    iref: {},
   },
 
   leftArm: {
@@ -56,8 +47,6 @@ char.andy = {
     n: 0,
     x: 110,
     y: 370,
-    dref: {},
-    iref: {},
   },
 
   rightArm: {
@@ -65,52 +54,54 @@ char.andy = {
     n: 0,
     x: 110,
     y: 370,
-    dref: {},
-    iref: {},
   },
 };
 
 game.cinit = () => {
   for (var key in char) {
-    console.log(char[key].info.name);
-
     game.ref.innerHTML += `<div id="${key}-char"></div>`;
     char[key].info.dref = doc.getElementById(`${key}-char`);
 
     for (var part in char[key]) {
       if (part !== "info") {
-        console.log(part);
-
         char[key].info.dref.innerHTML += `  <div id="${key}-${part}-container">
         <img id="${key}-${part}" src="${
           char[key][part].links[char[key][part].n]
-        }" />
-      </div>`;
-
-        char[key][part].dref = doc.getElementById(`${key}-${part}-container`);
-        char[key][part].iref = doc.getElementById(`${key}-${part}`);
+        }" /></div>`;
       }
     }
+    char[key].hair.dref = doc.getElementById(`${key}-hair-container`);
+    char[key].hair.iref = doc.getElementById(`${key}-hair`);
+
+    char[key].mouth.dref = doc.getElementById(`${key}-mouth-container`);
+    char[key].mouth.iref = doc.getElementById(`${key}-mouth`);
+
+    char[key].eyes.dref = doc.getElementById(`${key}-eyes-container`);
+    char[key].eyes.iref = doc.getElementById(`${key}-eyes`);
+
+    char[key].body.dref = doc.getElementById(`${key}-body-container`);
+    char[key].body.iref = doc.getElementById(`${key}-body`);
+
+    char[key].leftArm.dref = doc.getElementById(`${key}-leftArm-container`);
+    char[key].leftArm.iref = doc.getElementById(`${key}-leftArm`);
+
+    char[key].rightArm.dref = doc.getElementById(`${key}-rightArm-container`);
+    char[key].rightArm.iref = doc.getElementById(`${key}-rightArm`);
   }
 };
 
 game.cinit();
 
-// let andyMouth = doc.getElementById("andy-mouth");
-
-// let x = 0;
-
-// setInterval(() => {
-//   andyMouth.src = char.andy.mouth.links[x];
-
-//   //console.log(x);
-
-//   x = x == char.andy.mouth.links.length - 1 ? 0 : x + 1;
-// }, 1000);
+let x = 0;
 
 setInterval(() => {
-  doc.getElementById("andy-char").style.transform = `scale(${
-    window.innerHeight / 1000
-  })`;
-  doc.getElementById("game-container").style.height = window.innerHeight + "px";
+  char.andy.mouth.iref.src = char.andy.mouth.links[x];
+
+  x = x == char.andy.mouth.links.length - 1 ? 0 : x + 1;
+}, 1000);
+
+setInterval(() => {
+  char.andy.info.dref.style.transform = `scale(${window.innerHeight / 1000})`;
+
+  game.ref.style.height = window.innerHeight + "px";
 }, 10);
