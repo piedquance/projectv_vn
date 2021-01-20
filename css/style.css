@@ -26,6 +26,26 @@ html {
   -ms-user-select: none;
 }
 
+#typedletters {
+  position: absolute;
+  transform: scale(0.7);
+  top: 100px;
+}
+
+#keyboard {
+  position: absolute;
+  bottom: 0px;
+  transform: scale(0.8);
+}
+
+#thirdrow {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  bottom: 200px;
+}
+
 #textbox {
   position: absolute;
   z-index: 10;

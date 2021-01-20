@@ -8,6 +8,7 @@ window.onload = () => {
   game = {
     dialogue: "HOT TIP(ouch!): Click on the panel to progress the story!",
     nameTalking: "",
+    showText: false,
   };
 
   game.ref = doc.getElementById("game-container");
@@ -103,6 +104,9 @@ window.onload = () => {
     document.getElementById("dialogue").innerHTML = game.dialogue;
     document.getElementById("name").innerHTML = game.nameTalking;
 
+    document.getElementById("textbox").style.display =
+      game.showText == true ? "" : "none";
+
     for (var key in char) {
       char[key].info.dref.style.display = char[key].info.show ? "" : "none";
       if (!char[key].info.show) continue;
@@ -172,6 +176,9 @@ window.onload = () => {
 
   setInterval(() => {
     char.andy.info.dref.style.transform = `scale(${window.innerHeight / 1000})`;
+    document.getElementById("keyboard").style.transform = `scale(${
+      window.innerWidth / 2500
+    })`;
 
     game.ref.style.height = window.innerHeight + "px";
 
