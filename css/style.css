@@ -14,7 +14,7 @@ html {
   transform: scale(0.9);
 }
 
-#text-box {
+#textbox {
   position: absolute;
   z-index: 10;
   bottom: 0;
@@ -26,13 +26,18 @@ html {
   padding: 10px;
   margin: 0 0 10px 0;
   height: 20vh;
-
   border: 5px ridge #444;
-  opacity: 0.98;
+  opacity: 0.9;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  /* taken from https://stackoverflow.com/questions/6900124/how-to-make-certain-text-not-selectable-with-css#6900392 */
 }
 
-#text-box:hover {
-  opacity: 0.95;
+#textbox:hover {
+  opacity: 0.8;
 }
 
 #name {
