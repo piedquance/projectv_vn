@@ -22,42 +22,43 @@ window.onload = () => {
     },
 
     body: {
-      links: ["css/images/andy_body_full_suit.png"],
+      links: ["css/images/andy/body_full_suit.png"],
       n: 0,
     },
 
     hair: {
-      links: ["css/images/andy_hair1.png"],
+      links: ["css/images/andy/hair1.png"],
       n: 0,
       y: 0,
     },
 
     mouth: {
       links: [
-        "css/images/andy_mouth3.png",
-        "css/images/andy_mouth1.png",
-        "css/images/andy_mouth2.png",
-        "css/images/andy_mouth4.png",
+        "css/images/andy/mouth3.png",
+        "css/images/andy/mouth1.png",
+        "css/images/andy/mouth2.png",
+        "css/images/andy/mouth4.png",
+        "css/images/andy/mouth5.png",
       ],
       n: 0,
       y: 270,
     },
 
     eyes: {
-      links: ["css/images/andy_eyes1.png"],
+      links: ["css/images/andy/eyes1.png"],
       n: 0,
       y: 150,
     },
 
     leftArm: {
-      links: ["css/images/andy_larm1_full_suit.png"],
+      links: ["css/images/andy/larm1_full_suit.png"],
       n: 0,
       x: 110,
       y: 370,
     },
 
     rightArm: {
-      links: ["css/images/andy_rarm1_full_suit.png"],
+      links: ["css/images/andy/rarm1_full_suit.png"],
       n: 0,
       x: 110,
       y: 370,
@@ -73,7 +74,7 @@ window.onload = () => {
       for (var part in temp) {
         if (part !== "info") {
           temp.info.dref.innerHTML += `<div class="container ${part}" id="${key}-${part}-container">
-        <img id="${key}-${part}" src="${
+        <img draggable="false" (dragstart)=false class="char-image" id="${key}-${part}" src="${
             temp[part].links[temp[part].n]
           }" /></div>`;
         }
