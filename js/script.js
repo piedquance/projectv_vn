@@ -6,35 +6,13 @@ window.onload = () => {
   var textbox = document.getElementById("textbox");
   char = {};
   game = {
-    dialogue: "HOT TIP(ouch!): Click on the panel to progress the story!",
+    dialogue:
+      "HOT TIP(ouch!): <span id='p'>Click</span> on the panel to progress the story!",
     nameTalking: "",
     showText: false,
   };
 
   game.ref = doc.getElementById("game-container");
-
-  title = {
-    P: [2],
-    S: [2],
-    Y: [3],
-    C: [4],
-    H: [3],
-    O: [2],
-    A: [3],
-    N: [4],
-    T: [4],
-    M: [2],
-    list: ["P", "S", "Y", "C", "H", "O", "A", "N", "T", "M"],
-  };
-  game.tinit = () => {
-    for (key in title) {
-      if (key !== "list") {
-        for (let n = 1; n < 5; n++) {
-          title[key][n] = "css/images/LETTERS/" + key + n + ".png";
-        }
-      }
-    }
-  };
 
   char.andy = {
     info: {
@@ -154,7 +132,6 @@ window.onload = () => {
   };
 
   game.cinit();
-  game.tinit();
 
   document.getElementById("textbox").addEventListener("click", () => {
     console.log(game.story[0]);
@@ -207,45 +184,39 @@ window.onload = () => {
     game.ref.style.height = window.innerHeight + "px";
 
     game.update();
-  }, 10);
+  }, 100);
+
+  let music = new Audio("css/music/music.mp3");
+
+  music.play();
+
+  music.addEventListener(
+    "ended",
+    function () {
+      this.currentTime = 0;
+      this.play();
+    },
+    false
+  );
+
+  document.getElementById("startimg").addEventListener("mouseenter", () => {
+    document.getElementById("startimg").src = "css/images/title/start2.png";
+  });
+
+  document.getElementById("startimg").addEventListener("mouseleave", () => {
+    document.getElementById("startimg").src = "css/images/title/start.png";
+  });
+
+  document.getElementById("startimg").addEventListener("click", () => {
+    document.getElementById("menu").style.display = "none";
+    game.showText = true;
+  });
+
+  document.getElementById("optionsimg").addEventListener("mouseenter", () => {
+    document.getElementById("optionsimg").src = "css/images/title/options2.png";
+  });
+
+  document.getElementById("optionsimg").addEventListener("mouseleave", () => {
+    document.getElementById("optionsimg").src = "css/images/title/options.png";
+  });
 };
-
-// setInterval(() => {
-//   title[title.list[Math.floor(Math.random() * 10 + 0)]][0] = Math.floor(
-//     Math.random() * 4 + 1
-//   );
-
-//   for (key in title) {
-//     if (key !== "list") {
-//       if (title[key][0] < 2) title[key][0] = 2;
-//     }
-//   }
-
-//   document.getElementById("title").children[0].src = title.P[title.P[0]];
-//   document.getElementById("title").children[1].src = title.S[title.S[0] - 1];
-//   document.getElementById("title").children[2].src = title.Y[title.Y[0]];
-//   document.getElementById("title").children[3].src = title.C[title.C[0]];
-//   document.getElementById("title").children[4].src = title.H[title.H[0]];
-//   document.getElementById("title").children[5].src = title.O[title.O[0]];
-//   document.getElementById("title").children[6].src = title.P[title.P[0] - 1];
-//   document.getElementById("title").children[7].src = title.H[title.H[0] - 1];
-//   document.getElementById("title").children[8].src = title.A[title.A[0]];
-//   document.getElementById("title").children[9].src = title.N[title.N[0]];
-//   document.getElementById("title").children[10].src = title.T[title.T[0]];
-//   document.getElementById("title").children[11].src = title.A[title.A[0] - 1];
-//   document.getElementById("title").children[12].src = title.S[title.S[0]];
-//   document.getElementById("title").children[13].src = title.M[title.M[0]];
-// }, 50);
-
-let music = new Audio("css/music/music.mp3");
-
-music.play();
-
-music.addEventListener(
-  "ended",
-  function () {
-    this.currentTime = 0;
-    this.play();
-  },
-  false
-);
