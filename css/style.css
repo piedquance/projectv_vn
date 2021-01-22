@@ -2,8 +2,9 @@ body,
 html {
   margin: 0;
   overflow: hidden;
-  /* background-image: url(./images/bg/static.gif);
-  background-size: cover; */
+  background-image: url(./images/bg/static.gif);
+  background-color: salmon;
+  background-size: cover;
 }
 #game-container {
   display: flex;
@@ -18,7 +19,6 @@ html {
 
 .char-image,
 .container {
-  user-drag: none;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -27,13 +27,27 @@ html {
 }
 
 #title {
-  position: absolute;
-  transform: scale(0.7);
-  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  flex-grow: 1;
 }
 
-.titleletter {
-  vertical-align: middle;
+#menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+#start,
+#options {
+  transform: scale(0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
 }
 
 #keyboard {

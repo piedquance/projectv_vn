@@ -236,3 +236,16 @@ window.onload = () => {
 //   document.getElementById("title").children[12].src = title.S[title.S[0]];
 //   document.getElementById("title").children[13].src = title.M[title.M[0]];
 // }, 50);
+
+let music = new Audio("css/music/music.mp3");
+
+music.play();
+
+music.addEventListener(
+  "ended",
+  function () {
+    this.currentTime = 0;
+    this.play();
+  },
+  false
+);
